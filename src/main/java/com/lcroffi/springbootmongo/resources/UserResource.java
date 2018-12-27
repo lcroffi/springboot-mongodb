@@ -44,4 +44,10 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build(); //retorna uma resposta vazia com o código 201 e a url do objeto inserido
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+ 	public ResponseEntity<Void> delete(@PathVariable String id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build(); // retorna o código 204
+	}
 }
